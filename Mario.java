@@ -58,6 +58,8 @@ public class Mario {
 			play(B4, 80, 500);
 		}
 
+		/*
+
 		play(B4, 100, 300); //F
 
 		while (false) {
@@ -121,21 +123,9 @@ public class Mario {
 		play(B4, 100, 300);
 
 		// Insert 2
-		play(G5, 100, 100);
-		play(Fs5, 100, 150);
-		play(E5, 100, 150);
-		play(Ds5, 150, 300);
-
-		play(E5, 150, 300);
-		play(G4, 100, 150);
-		play(A4, 100, 150);
-
-		play(B4, 100, 300);
-		play(A4, 100, 150);
-		play(B4, 100, 100);
-		play(D5, 100, 425);
-		// End Insert 2
 		}
+
+		*/
 
 		System.out.println("End.");
 		Button.ESCAPE.waitForPressAndRelease();
