@@ -4,45 +4,42 @@
 
 import lejos.nxt.Button;
 import lejos.nxt.Motor;
+import lejos.nxt.LCD;
 
 public class Katapultti {
 	public static void main(String[] argh) {
-		System.out.println("Prss any key");
-		System.out.println(" to SHOOT !");
-
-		Button.ENTER.waitForPressAndRelease();
-
 		Motor a = Motor.A;
 		Motor b = Motor.B;
 		Motor c = Motor.C;
 
-		a.resetTachoCount();
-		b.resetTachoCount();
-		c.resetTachoCount();
+		while (!Button.ESCAPE.isPressed()) {
+			LCD.clear();
 
-		a.setSpeed(900);
-		b.setSpeed(900);
-		c.setSpeed(900);
+			System.out.println(" Ammu !!");
 
-		System.out.println("Tacho A: " + a.getTachoCount());
+			a.resetTachoCount(); b.resetTachoCount(); c.resetTachoCount();
 
-		a.backward();
-		b.backward();
-		c.backward();
+			a.setSpeed(900); b.setSpeed(900); c.setSpeed(900);
 
-		while (-60 < a.getTachoCount()) {
-			System.out.println("Tacho A: " + a.getTachoCount());
+			Button.ENTER.waitForPressAndRelease();
+
+			a.backward(); b.backward(); c.backward();
+
+			while (-69 < a.getTachoCount()) {}
+
+			c.stop(); b.stop(); a.stop();
+
+			try { Thread.sleep (1000); } catch (Exception e) {}
+
+			a.setSpeed(90); b.setSpeed(90); c.setSpeed(90);
+
+			a.forward(); b.forward(); c.forward();
+
+			while (0 > a.getTachoCount()) {}
+
+			c.stop(); b.stop(); a.stop();
+
+			a.flt(); b.flt(); c.flt();
 		}
-
-		a.stop();
-		b.stop();
-		c.stop();
-
-		a.flt();
-		b.flt();
-		c.flt();
-
-		System.out.println("Done.");
-		Button.ESCAPE.waitForPressAndRelease();
 	}
 }
