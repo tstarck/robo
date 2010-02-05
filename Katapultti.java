@@ -8,6 +8,7 @@ import lejos.nxt.Motor;
 public class Katapultti {
 	public static void main(String[] argh) {
 		System.out.println("Prss any key");
+		System.out.println(" to SHOOT !");
 
 		Button.ENTER.waitForPressAndRelease();
 
@@ -25,27 +26,23 @@ public class Katapultti {
 
 		System.out.println("Tacho A: " + a.getTachoCount());
 
-		a.forward();
-		b.forward();
-		c.forward();
+		a.backward();
+		b.backward();
+		c.backward();
 
-		while (90 < a.getTachoCount() || 90 < b.getTachoCount() || 90 < c.getTachoCount()) {
-			a.flt();
-			b.flt();
-			c.flt();
+		while (-60 < a.getTachoCount()) {
+			System.out.println("Tacho A: " + a.getTachoCount());
 		}
 
-		// try { Thread.sleep (1000); } catch (Exception e) {}
+		a.stop();
+		b.stop();
+		c.stop();
 
-		// a.lock(99);
-		// b.lock(99);
-		// c.lock(99);
+		a.flt();
+		b.flt();
+		c.flt();
 
-		// a.flt();
-		// b.flt();
-		// c.flt();
-
-		System.out.println("End.");
+		System.out.println("Done.");
 		Button.ESCAPE.waitForPressAndRelease();
 	}
 }
