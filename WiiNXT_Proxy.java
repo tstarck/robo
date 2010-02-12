@@ -22,7 +22,7 @@ import wiiusej.wiiusejevents.wiiuseapievents.*;
  * 
  * Big thanks to enzomango for the original post.
  * 
- * @author Jouko Strömmer
+ * @author Jouko StrÃ¶mmer
  *
  */
 public class WiiNXT_Proxy implements WiimoteListener {

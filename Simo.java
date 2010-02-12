@@ -1,5 +1,5 @@
 /* Simo.java
- * Simple test of consept with a vehicle with an middle axis.
+ * Wiimote controlled vehicle with an middle axis.
  */
 
 import lejos.nxt.LCD;
@@ -7,6 +7,7 @@ import lejos.nxt.Button;
 import lejos.nxt.Motor;
 
 public class Simo {
+	/*
 	public static Motor keula = Motor.A;
 	public static Motor akseli = Motor.B;
 	public static Motor taka = Motor.C;
@@ -44,8 +45,21 @@ public class Simo {
 
 		akseli.lock(99);
 	}
+	*/
 
 	public static void main(String[] limbo) {
+		WiiNXT ohjain = WiiNXT.getInstance();
+
+		ohjain.setMode(WiiNXT.RECVMOTION | WiiNXT.RECVBUTTONS | WiiNXT.MOTIONON);
+
+		while (!Button.ENTER.isPressed()) {
+			ohjain.read();
+			System.out.println("Pitch::" + ohjain.pitch());
+			if (Button.ESCAPE.isPressed()) ohjain.setRumble(true);
+			else ohjain.setRumble(false);
+		}
+
+		/*
 		System.out.println("Vruum?");
 		Button.ENTER.waitForPressAndRelease();
 		akseli.resetTachoCount();
@@ -63,5 +77,6 @@ public class Simo {
 
 		System.out.println("End.");
 		Button.ESCAPE.waitForPressAndRelease();
+		*/
 	}
 }
