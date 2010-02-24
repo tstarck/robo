@@ -1,5 +1,5 @@
 /* Simo.java
- * Wiimote controlled vehicle with an middle axis.
+ * Trivial testcode for NXT/Wiimote.
  */
 
 import lejos.nxt.LCD;
