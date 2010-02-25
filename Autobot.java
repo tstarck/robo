@@ -1,34 +1,30 @@
 /* Autobot.java
  */
 
-import java.io.IOException;
 import lejos.nxt.Button;
-import lejos.nxt.comm.*;
-import lejos.nxt.remote.*;
+import lejos.robotics.subsumption.*;
 
 public class Autobot {
 	public static void main(String[] argh) {
-		RemoteNXT yhteys = null;
+		Behavior blutuut = null;
 
-		System.out.print("Connect..");
-
-		try {
-			yhteys = new RemoteNXT("lego2", Bluetooth.getConnector());
-			System.out.println(" done!");
+		if (Button.ENTER == Button.waitForPress()) {
+			System.out.println("I am Master");
+			blutuut = new Master("NXT");
 		}
-		catch (IOException e) {
-			System.out.println(" failed!");
-			Button.waitForPress();
-			System.exit(1);
+		else {
+			System.out.println("I iz Puppy");
+			blutuut = new Puppy();
 		}
 
-		RemoteMotor kone = yhteys.A;
-		kone.setSpeed(360);
-		kone.forward();
-		try { Thread.sleep(2000); } catch (Exception e) {}
-		kone.flt();
+		Behavior[] toiminnot = {blutuut};
 
-		Button.ESCAPE.waitForPressAndRelease();
+		Arbitrator toimintamalli = new Arbitrator(toiminnot, true);
+
+		toimintamalli.start();
+
+		System.out.println("The End");
+		Button.waitForPress();
 		System.exit(0);
 	}
 }
