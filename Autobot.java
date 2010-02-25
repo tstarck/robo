@@ -1,5 +1,4 @@
-/* Autobot.java
- */
+/* Autobot.java */
 
 import lejos.nxt.Button;
 import lejos.robotics.subsumption.*;
@@ -8,7 +7,9 @@ public class Autobot {
 	public static void main(String[] argh) {
 		Behavior blutuut = null;
 
-		if (Button.ENTER == Button.waitForPress()) {
+		System.out.println("Master-mode?");
+
+		if (1 == Button.waitForPress()) {
 			System.out.println("I am Master");
 			blutuut = new Master("NXT");
 		}

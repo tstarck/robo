@@ -2,10 +2,12 @@
  * Code for the listening part in connection between two NXTs.
  */
 
+import java.io.File;
 import java.io.IOException;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 
+import lejos.nxt.Sound;
 import lejos.nxt.comm.*;
 import lejos.robotics.subsumption.*;
 
@@ -45,15 +47,16 @@ public class Puppy implements Behavior {
 	}
 
 	public void action() {
-		int tmp = 0;
-
 		try {
-			tmp = this.in.readInt();
-			System.out.println("[" + tmp + "]");
-			tmp = 0;
+			if (this.in.readInt() == 42) {
+				Sound.playSample(new File("Bark.wav"));
+			}
+			else {
+				throw new IOException();
+			}
 		}
 		catch (IOException e) {
-			System.out.println(":-/");
+			this.enabled = false;
 		}
 	}
 }

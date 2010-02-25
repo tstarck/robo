@@ -50,13 +50,13 @@ public class Master implements Behavior {
 
 	public void action() {
 		try {
-			this.out.writeInt(0);
+			this.out.writeInt(42);
 			this.out.flush();
-			Delay.now(10000);
+			Delay.now(5000);
 		}
 		catch (IOException e) {
 			System.out.println(":-/");
-			System.exit(1);
+			this.enabled = false;
 		}
 	}
 }
