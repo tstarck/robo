@@ -9,12 +9,12 @@ public class Autobot {
 
 		System.out.println("Master-mode?");
 
-		if (1 == Button.waitForPress()) {
+		if (Button.waitForPress() == Button.ID_ENTER) {
 			System.out.println("I am Master");
 			blutuut = new Master("NXT");
 		}
 		else {
-			System.out.println("I iz Puppy");
+			System.out.println("I iz Puppie");
 			blutuut = new Puppy();
 		}
 
