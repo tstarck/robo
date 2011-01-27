@@ -15,11 +15,11 @@ public class Ctrl {
 
 		Arbitrator toimintamalli = new Arbitrator(toiminnot, true);
 
-		System.out.println("> begin");
+		System.out.println("> alkaa");
 
 		toimintamalli.start();
 
-		System.out.println("> end");
+		System.out.println("> loppu");
 
 		Button.ENTER.waitForPressAndRelease();
 

@@ -6,13 +6,15 @@ import lejos.nxt.TouchSensor;
 import lejos.robotics.subsumption.*;
 
 public class Move implements Behavior {
-	private int x;
+	private int delta;
+	private int speed;
 	private TouchSensor nappi;
 	private static Motor oikea = Motor.A;
 	private static Motor vasen = Motor.B;
 
 	public Move() {
-		this.x = 1000;
+		this.speed = 0;
+		this.delta = 10;
 		this.nappi = new TouchSensor(SensorPort.S1);
 	}
 
@@ -21,11 +23,14 @@ public class Move implements Behavior {
 	}
 
 	public void action() {
-		System.out.println("> move " + this.x);
-		Delay.now(this.x);
-		this.x += 100;
+		this.speed += this.delta;
+
+		oikea.setSpeed(this.speed);
+		vasen.setSpeed(this.speed);
+
+		oikea.backward();
+		vasen.backward();
 	}
 
-	public void suppress() {
-	}
+	public void suppress() {}
 }
