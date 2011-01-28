@@ -5,6 +5,8 @@ import lejos.nxt.SensorPort;
 import lejos.nxt.TouchSensor;
 import lejos.robotics.subsumption.*;
 
+/**
+ */
 public class Move implements Behavior {
 	private int delta;
 	private int speed;
@@ -14,7 +16,7 @@ public class Move implements Behavior {
 
 	public Move() {
 		this.speed = 0;
-		this.delta = 10;
+		this.delta = 3;
 		this.nappi = new TouchSensor(SensorPort.S1);
 	}
 
@@ -23,7 +25,8 @@ public class Move implements Behavior {
 	}
 
 	public void action() {
-		this.speed += this.delta;
+		if (this.speed < 900)
+			this.speed += this.delta;
 
 		oikea.setSpeed(this.speed);
 		vasen.setSpeed(this.speed);
