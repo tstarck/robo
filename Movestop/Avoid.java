@@ -31,7 +31,7 @@ public class Avoid implements Behavior {
 		oikea.lock(100);
 		vasen.lock(100);
 
-		System.out.println("> tuut");
+		// System.out.println("> tuut tuut");
 
 		oikea.resetTachoCount();
 		vasen.resetTachoCount();
@@ -39,8 +39,10 @@ public class Avoid implements Behavior {
 		oikea.setSpeed(360);
 		vasen.setSpeed(360);
 
-		oikea.rotate(-210, true);
-		vasen.rotate(150, true);
+		oikea.rotate(-170, true);
+		vasen.rotate(210, true);
+
+		Delay.now(666);
 
 		this.ctrl = false;
 	}

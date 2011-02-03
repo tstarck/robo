@@ -25,7 +25,7 @@ public class Move implements Behavior {
 	}
 
 	public void action() {
-		if (this.speed < 900)
+		if (this.speed < 666)
 			this.speed += this.delta;
 
 		oikea.setSpeed(this.speed);

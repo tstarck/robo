@@ -8,19 +8,28 @@ import lejos.robotics.subsumption.*;
 /**
  */
 public class Stop implements Behavior {
+	private boolean lukko;
 	private TouchSensor nappi;
 	private static Motor oikea = Motor.A;
 	private static Motor vasen = Motor.B;
 
 	public Stop() {
+		this.lukko = false;
 		this.nappi = new TouchSensor(SensorPort.S1);
 	}
 
 	public boolean takeControl() {
-		return !nappi.isPressed();
+		if (nappi.isPressed()) {
+			this.lukko = false;
+			return false;
+		}
+
+		return true;
 	}
 
 	public void action() {
+		if (this.lukko) return;
+
 		oikea.lock(100);
 		vasen.lock(100);
 
@@ -33,8 +42,12 @@ public class Stop implements Behavior {
 		oikea.rotate(180, true);
 		vasen.rotate(180, true);
 
+		Delay.now(666);
+
 		oikea.flt();
 		vasen.flt();
+
+		this.lukko = true;
 	}
 
 	public void suppress() {}
