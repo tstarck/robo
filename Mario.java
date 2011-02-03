@@ -28,7 +28,9 @@ public class Mario {
 	private final static int C6 = 1047;
 
 	public static void main(String[] argh) {
+		int vol = Sound.getVolume();
 		System.out.println("Mario!");
+		Sound.setVolume(66);
 
 		play(E5, 100, 150);
 		play(E5, 100, 300);
@@ -128,6 +130,7 @@ public class Mario {
 		*/
 
 		System.out.println("End.");
+		Sound.setVolume(vol);
 		Button.ESCAPE.waitForPressAndRelease();
 	}
 
